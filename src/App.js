@@ -1,10 +1,12 @@
-import React from 'react'
 import './App.css'
+import Timer from './components/Timer'
+
 
 function App() {
   return (
     <div>
-      <p>Clean React App</p>
+      <p>PomoScapes</p>
+      <Timer />
     </div>
   )
 }
