@@ -6,7 +6,12 @@ export const Context = React.createContext();
 
 
 function App() {
-  const [timer, setTimer] = useState(25);
+  const [timer, setTimer] = useState({
+    pomodoro: 25,
+    shortBreak: 5,
+    longBreak: 15,
+    longBreakInterval: 4
+  });
   
   return (
     <Context.Provider value={[timer, setTimer]}>
