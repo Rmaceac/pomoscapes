@@ -6,13 +6,17 @@ const Timer = () => {
   const [seconds, setSeconds] = useState(0);
   // const [showMessage, setShowMessage] = (false);
 
+const displayMinutes = minutes < 10 ? `0${minutes}` : minutes;
+const displaySeconds = seconds < 10 ? `0${seconds}` : seconds;
 
+useEffect(() => {
 
+}, []);
 
   return (
     <div>
       <Paper elevation={12}>
-        <h1>{minutes}:{seconds}</h1>
+        <h1>{displayMinutes}:{displaySeconds}</h1>
       </Paper>
     </div>
   );
