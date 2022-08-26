@@ -7,12 +7,33 @@ const Timer = () => {
   const [isActive, setIsActive] = useState(false);
   // const [showMessage, setShowMessage] = (false);
 
-useEffect(() => {
-  
-}, [seconds]);
+  const handleToggle = () => {
+    setIsActive(!isActive);
+  }
 
-const displayMinutes = minutes < 10 ? `0${minutes}` : minutes;
-const displaySeconds = seconds < 10 ? `0${seconds}` : seconds;
+  useEffect(() => {
+    if (isActive) {
+      const interval = setInterval(() => {
+        clearInterval(interval);  
+        if (seconds === 0) {
+          if (minutes !== 0) {
+            setSeconds(59);
+            setMinutes(minutes - 1);
+          } else {
+            // logic for when timer runs out
+          }
+        }
+        if (seconds > 0) {
+          setSeconds(seconds - 1);
+        }
+      }, 1000)
+
+    }
+    
+  }, [seconds, isActive]);
+
+  const displayMinutes = minutes < 10 ? `0${minutes}` : minutes;
+  const displaySeconds = seconds < 10 ? `0${seconds}` : seconds;
 
   return (
     <div>
@@ -21,7 +42,7 @@ const displaySeconds = seconds < 10 ? `0${seconds}` : seconds;
           <span>{displayMinutes}</span>:<span>{displaySeconds}</span>
         </div>
         <div>
-          <button>
+          <button onClick={handleToggle}>
             {isActive ? 'Pause' : 'Start'}
           </button>
         </div>
