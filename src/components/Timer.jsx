@@ -11,6 +11,12 @@ const Timer = () => {
     setIsActive(!isActive);
   }
 
+  const handleReset = () => {
+    setIsActive(false);
+    setMinutes(25);
+    setSeconds(0);
+  }
+
   useEffect(() => {
     if (isActive) {
       const interval = setInterval(() => {
@@ -45,6 +51,7 @@ const Timer = () => {
           <button onClick={handleToggle}>
             {isActive ? 'Pause' : 'Start'}
           </button>
+          <button onClick={handleReset}>Reset</button>
         </div>
       </Paper>
     </div>
