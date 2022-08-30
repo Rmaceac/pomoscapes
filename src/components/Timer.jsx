@@ -2,9 +2,14 @@ import { useState, useEffect } from 'react';
 import Paper from "@mui/material/Paper";
 
 const Timer = () => {
-  const [minutes, setMinutes] = useState(25);
-  const [seconds, setSeconds] = useState(0);
+  const [minutes, setMinutes] = useState(0);
+  const [seconds, setSeconds] = useState(5);
   const [isActive, setIsActive] = useState(false);
+  const timer = {
+    pomo: 25,
+    shortBreak: 5,
+    longBreak: 15
+  }
   // const [showMessage, setShowMessage] = (false);
 
   const handleToggle = () => {
@@ -27,6 +32,8 @@ const Timer = () => {
             setMinutes(minutes - 1);
           } else {
             // logic for when timer runs out
+            setIsActive(false);
+
           }
         }
         if (seconds > 0) {
