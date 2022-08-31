@@ -35,10 +35,13 @@ const Timer = () => {
             setIsPomo(!isPomo);
             // set minutes to 5 if isPomo
             if (isPomo) {
-              setMinutes(5);
-              setSeconds(0);
+              setMinutes(0);
+              setSeconds(7);
             }
             // handleReset if !isPomo
+            if (!isPomo) {
+              handleReset();
+            }
           }
         }
         if (seconds > 0) {
