@@ -5,11 +5,7 @@ const Timer = () => {
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(5);
   const [isActive, setIsActive] = useState(false);
-  const timer = {
-    pomo: 25,
-    shortBreak: 5,
-    longBreak: 15
-  }
+  const [isPomo, setIsPomo] = useState(true);
   // const [showMessage, setShowMessage] = (false);
 
   const handleToggle = () => {
@@ -33,7 +29,16 @@ const Timer = () => {
           } else {
             // logic for when timer runs out
             setIsActive(false);
-
+            // set interval shortBreak || pomo, based on which round just ended
+            // ---------
+            // toggle Pomo mode
+            setIsPomo(!isPomo);
+            // set minutes to 5 if isPomo
+            if (isPomo) {
+              setMinutes(5);
+              setSeconds(0);
+            }
+            // handleReset if !isPomo
           }
         }
         if (seconds > 0) {
