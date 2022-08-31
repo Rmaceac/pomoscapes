@@ -27,18 +27,12 @@ const Timer = () => {
             setSeconds(59);
             setMinutes(minutes - 1);
           } else {
-            // logic for when timer runs out
             setIsActive(false);
-            // set interval shortBreak || pomo, based on which round just ended
-            // ---------
-            // toggle Pomo mode
             setIsPomo(!isPomo);
-            // set minutes to 5 if isPomo
             if (isPomo) {
               setMinutes(0);
               setSeconds(7);
             }
-            // handleReset if !isPomo
             if (!isPomo) {
               handleReset();
             }
