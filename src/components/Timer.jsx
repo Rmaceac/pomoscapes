@@ -6,7 +6,7 @@ const Timer = () => {
   const [seconds, setSeconds] = useState(0);
   const [isActive, setIsActive] = useState(false);
   const [isPomo, setIsPomo] = useState(true);
-  // const [showMessage, setShowMessage] = (false);
+  const [showMessage, setShowMessage] = useState(false);
 
   const handleToggle = () => {
     setIsActive(!isActive);
@@ -31,6 +31,7 @@ const Timer = () => {
             setIsActive(false);
             setIsPomo(!isPomo);
             if (isPomo) {
+              setShowMessage(true);
               setMinutes(5);
               setSeconds(0);
             }
@@ -54,9 +55,11 @@ const Timer = () => {
   return (
     <div>
       <Paper elevation={12}>
-        <div className='timer-msg'>
-          Time for a break!
-        </div>
+        { showMessage &&
+          <div className='timer-msg'>
+            Time for a break!
+          </div>
+        }
         <div>
           <span>{displayMinutes}</span>:<span>{displaySeconds}</span>
         </div>
