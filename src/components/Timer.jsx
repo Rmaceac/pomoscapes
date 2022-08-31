@@ -14,6 +14,7 @@ const Timer = () => {
 
   const handleReset = () => {
     setIsActive(false);
+    setShowMessage(false);
     setMinutes(25);
     setSeconds(0);
   }
