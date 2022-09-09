@@ -2,11 +2,11 @@ import { useState, useEffect } from 'react';
 import Paper from "@mui/material/Paper";
 
 const Timer = () => {
-  const [minutes, setMinutes] = useState(0);
-  const [seconds, setSeconds] = useState(5);
+  const [minutes, setMinutes] = useState(25);
+  const [seconds, setSeconds] = useState(0);
   const [isActive, setIsActive] = useState(false);
   const [isPomo, setIsPomo] = useState(true);
-  // const [showMessage, setShowMessage] = (false);
+  const [showMessage, setShowMessage] = useState(false);
 
   const handleToggle = () => {
     setIsActive(!isActive);
@@ -14,6 +14,7 @@ const Timer = () => {
 
   const handleReset = () => {
     setIsActive(false);
+    setShowMessage(false);
     setMinutes(25);
     setSeconds(0);
   }
@@ -27,11 +28,13 @@ const Timer = () => {
             setSeconds(59);
             setMinutes(minutes - 1);
           } else {
+            // logic for when timer runs out
             setIsActive(false);
             setIsPomo(!isPomo);
             if (isPomo) {
-              setMinutes(0);
-              setSeconds(7);
+              setShowMessage(true);
+              setMinutes(5);
+              setSeconds(0);
             }
             if (!isPomo) {
               handleReset();
@@ -53,6 +56,11 @@ const Timer = () => {
   return (
     <div>
       <Paper elevation={12}>
+        { showMessage &&
+          <div className='timer-msg'>
+            Time for a break!
+          </div>
+        }
         <div>
           <span>{displayMinutes}</span>:<span>{displaySeconds}</span>
         </div>
