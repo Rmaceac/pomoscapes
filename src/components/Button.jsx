@@ -8,10 +8,15 @@ const Button = ({
   buttonStyle,
   buttonSize,
   onClick
-}) => {
+  }) => {
   
+const checkButtonStyles = STYLES.includes(buttonStyle) ? buttonStyle : STYLES[0];
+const checkButtonSize = SIZESincludes(buttonSize) ? buttonSize : SIZES[0];
+
   return (
-    <Button></Button>
+    <Button>
+      
+    </Button>
   )
 }
 
