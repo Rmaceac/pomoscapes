@@ -7,6 +7,7 @@ const Timer = () => {
   const [isActive, setIsActive] = useState(false);
   const [isPomo, setIsPomo] = useState(true);
   const [showMessage, setShowMessage] = useState(false);
+  const [round, setRound] = useState(1);
 
   const handleToggle = () => {
     setIsActive(!isActive);
@@ -38,6 +39,7 @@ const Timer = () => {
             }
             if (!isPomo) {
               handleReset();
+              setRound(round + 1);
             }
           }
         }
@@ -70,6 +72,7 @@ const Timer = () => {
           </button>
           <button onClick={handleReset}>Reset</button>
         </div>
+        <div>Round: {round}</div>
       </Paper>
     </div>
   );
