@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
-import Paper from "@mui/material/Paper";
+import Paper from '@mui/material/Paper';
+// import useSound from 'use-sound';
+import birdSong from '../sounds/birdsong alarm.mp3'
 
 const Timer = () => {
   // CHANGE minutes/seconds NUMBERS FOR TESTING/DEPLOYMENT
@@ -21,6 +23,10 @@ const Timer = () => {
     setMinutes(0);
     setSeconds(4);
   }
+
+  // const playPomoEnd = useSound(birdSong);
+
+  // const playBreakEnd = useSound();
 
   useEffect(() => {
     if (isActive) {
