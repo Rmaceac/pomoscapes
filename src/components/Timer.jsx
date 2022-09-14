@@ -2,8 +2,9 @@ import { useState, useEffect } from 'react';
 import Paper from "@mui/material/Paper";
 
 const Timer = () => {
-  const [minutes, setMinutes] = useState(25);
-  const [seconds, setSeconds] = useState(0);
+  // CHANGE minutes/seconds NUMBERS FOR TESTING/DEPLOYMENT
+  const [minutes, setMinutes] = useState(0);
+  const [seconds, setSeconds] = useState(5);
   const [isActive, setIsActive] = useState(false);
   const [isPomo, setIsPomo] = useState(true);
   const [showMessage, setShowMessage] = useState(false);
@@ -16,8 +17,9 @@ const Timer = () => {
   const handleReset = () => {
     setIsActive(false);
     setShowMessage(false);
-    setMinutes(25);
-    setSeconds(0);
+    // CHANGE BELOW NUMBERS FOR TESTING/DEPLOYMENT
+    setMinutes(0);
+    setSeconds(4);
   }
 
   useEffect(() => {
@@ -34,8 +36,14 @@ const Timer = () => {
             setIsPomo(!isPomo);
             if (isPomo) {
               setShowMessage(true);
-              setMinutes(5);
-              setSeconds(0);
+              if (round % 4 === 0) {
+                setMinutes(15);
+                setSeconds(0);
+              } else {
+                // CHANGE BELOW NUMBERS FOR TESTING/DEPLOYMENT
+                setMinutes(0);
+                setSeconds(7);
+              }
             }
             if (!isPomo) {
               handleReset();
