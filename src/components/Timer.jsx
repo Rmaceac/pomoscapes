@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import Paper from "@mui/material/Paper";
 
 const Timer = () => {
-  const [minutes, setMinutes] = useState(0);
-  const [seconds, setSeconds] = useState(5);
+  const [minutes, setMinutes] = useState(25);
+  const [seconds, setSeconds] = useState(0);
   const [isActive, setIsActive] = useState(false);
   const [isPomo, setIsPomo] = useState(true);
   // const [showMessage, setShowMessage] = (false);
