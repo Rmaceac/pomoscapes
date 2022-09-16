@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import Paper from '@mui/material/Paper';
-// import useSound from 'use-sound';
+import useSound from 'use-sound';
 import birdSong from '../sounds/birdsong alarm.mp3'
 
 const Timer = () => {
@@ -24,7 +24,7 @@ const Timer = () => {
     setSeconds(4);
   }
 
-  // const playPomoEnd = useSound(birdSong);
+  const [playPomoEnd] = useSound(birdSong);
 
   // const playBreakEnd = useSound();
 
