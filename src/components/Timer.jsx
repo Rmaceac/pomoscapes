@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Paper from '@mui/material/Paper';
 import useSound from 'use-sound';
-import birdSong from '../sounds/birdsong alarm.mp3'
+import sprite from '../sounds/pomoscapes-sprite.mp3'
 
 const Timer = () => {
   // CHANGE minutes/seconds NUMBERS FOR TESTING/DEPLOYMENT
@@ -24,7 +24,12 @@ const Timer = () => {
     setSeconds(4);
   }
 
-  const [play] = useSound(birdSong);
+  const [play] = useSound(sprite, {
+    sprite: {
+      bird: [0, 5500],
+      ding: [6000, 4000]
+    }
+  });
 
   // const playBreakEnd = useSound();
 
@@ -38,10 +43,10 @@ const Timer = () => {
             setMinutes(minutes - 1);
           } else {
             // logic for when timer runs out
-            play();
             setIsActive(false);
             setIsPomo(!isPomo);
             if (isPomo) {
+              play({id: 'bird'});
               setShowMessage(true);
               if (round % 4 === 0) {
                 setMinutes(15);
@@ -53,6 +58,7 @@ const Timer = () => {
               }
             }
             if (!isPomo) {
+              play({id: 'ding'})
               handleReset();
               setRound(round + 1);
             }
