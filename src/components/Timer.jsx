@@ -24,7 +24,7 @@ const Timer = () => {
     setSeconds(4);
   }
 
-  const [playPomoEnd] = useSound(birdSong);
+  const [play] = useSound(birdSong);
 
   // const playBreakEnd = useSound();
 
@@ -38,6 +38,7 @@ const Timer = () => {
             setMinutes(minutes - 1);
           } else {
             // logic for when timer runs out
+            play();
             setIsActive(false);
             setIsPomo(!isPomo);
             if (isPomo) {
