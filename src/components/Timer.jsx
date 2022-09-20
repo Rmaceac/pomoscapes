@@ -1,12 +1,16 @@
 import { useState, useEffect } from 'react';
-import Paper from "@mui/material/Paper";
+import Paper from '@mui/material/Paper';
+import useSound from 'use-sound';
+import sprite from '../sounds/pomoscapes-sprite.mp3'
 
 const Timer = () => {
-  const [minutes, setMinutes] = useState(25);
-  const [seconds, setSeconds] = useState(0);
+  // CHANGE minutes/seconds NUMBERS FOR TESTING/DEPLOYMENT
+  const [minutes, setMinutes] = useState(0);
+  const [seconds, setSeconds] = useState(5);
   const [isActive, setIsActive] = useState(false);
   const [isPomo, setIsPomo] = useState(true);
   const [showMessage, setShowMessage] = useState(false);
+  const [round, setRound] = useState(1);
 
   const handleToggle = () => {
     setIsActive(!isActive);
@@ -15,9 +19,19 @@ const Timer = () => {
   const handleReset = () => {
     setIsActive(false);
     setShowMessage(false);
-    setMinutes(25);
-    setSeconds(0);
+    // CHANGE BELOW NUMBERS FOR TESTING/DEPLOYMENT
+    setMinutes(0);
+    setSeconds(4);
   }
+
+  const [play] = useSound(sprite, {
+    sprite: {
+      bird: [0, 5500],
+      ding: [6000, 4000]
+    }
+  });
+
+  // const playBreakEnd = useSound();
 
   useEffect(() => {
     if (isActive) {
@@ -32,12 +46,21 @@ const Timer = () => {
             setIsActive(false);
             setIsPomo(!isPomo);
             if (isPomo) {
+              play({id: 'bird'});
               setShowMessage(true);
-              setMinutes(5);
-              setSeconds(0);
+              if (round % 4 === 0) {
+                setMinutes(15);
+                setSeconds(0);
+              } else {
+                // CHANGE BELOW NUMBERS FOR TESTING/DEPLOYMENT
+                setMinutes(0);
+                setSeconds(7);
+              }
             }
             if (!isPomo) {
+              play({id: 'ding'})
               handleReset();
+              setRound(round + 1);
             }
           }
         }
@@ -70,6 +93,7 @@ const Timer = () => {
           </button>
           <button onClick={handleReset}>Reset</button>
         </div>
+        <div>Round: {round}</div>
       </Paper>
     </div>
   );
