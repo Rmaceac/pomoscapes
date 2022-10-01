@@ -6,7 +6,7 @@ function App() {
   return (
       <div>
         <p>PomoScapes</p>
-        <Timer className="timer"/>
+        <Timer />
       </div>
   )
 }

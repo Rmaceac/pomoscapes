@@ -1,4 +1,4 @@
-// import './Timer.css';
+import './Timer.css';
 import { useState, useEffect } from 'react';
 import Paper from '@mui/material/Paper';
 import useSound from 'use-sound';
@@ -78,7 +78,7 @@ const Timer = () => {
   const displaySeconds = seconds < 10 ? `0${seconds}` : seconds;
 
   return (
-    <div>
+    <div className='timer'>
       <Paper elevation={12}>
         { showMessage &&
           <div className='timer-msg'>
