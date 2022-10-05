@@ -77,9 +77,14 @@ const Timer = () => {
   const displayMinutes = minutes < 10 ? `0${minutes}` : minutes;
   const displaySeconds = seconds < 10 ? `0${seconds}` : seconds;
 
+  const paperStyle = {
+    backgroundColor: '#2594F0',
+    color: 'white'
+  };
+
   return (
     <div className='timer'>
-      <Paper elevation={12}>
+      <Paper elevation={12} sx={paperStyle}>
         { showMessage &&
           <div className='timer-msg'>
             Time for a break!
