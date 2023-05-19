@@ -6,8 +6,8 @@ import sprite from '../sounds/pomoscapes-sprite.mp3'
 
 const Timer = () => {
   // CHANGE minutes/seconds NUMBERS FOR TESTING/DEPLOYMENT
-  const [minutes, setMinutes] = useState(0);
-  const [seconds, setSeconds] = useState(5);
+  const [minutes, setMinutes] = useState(25);
+  const [seconds, setSeconds] = useState(0);
   const [isActive, setIsActive] = useState(false);
   const [isPomo, setIsPomo] = useState(true);
   const [showMessage, setShowMessage] = useState(false);
@@ -21,8 +21,8 @@ const Timer = () => {
     setIsActive(false);
     setShowMessage(false);
     // CHANGE BELOW NUMBERS FOR TESTING/DEPLOYMENT
-    setMinutes(0);
-    setSeconds(4);
+    setMinutes(25);
+    setSeconds(0);
   }
 
   const [play] = useSound(sprite, {
@@ -54,8 +54,8 @@ const Timer = () => {
                 setSeconds(0);
               } else {
                 // CHANGE BELOW NUMBERS FOR TESTING/DEPLOYMENT
-                setMinutes(0);
-                setSeconds(7);
+                setMinutes(5);
+                setSeconds(0);
               }
             }
             if (!isPomo) {
