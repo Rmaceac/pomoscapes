@@ -1,7 +1,8 @@
+import React from 'react';
 import { useState, useEffect } from 'react';
 import Paper from '@mui/material/Paper';
 import useSound from 'use-sound';
-import sprite from '../sounds/pomoscapes-sprite.mp3'
+import sprite from '../sounds/pomoscapes-sprite.mp3';
 
 const Timer = () => {
   // CHANGE minutes/seconds NUMBERS FOR TESTING/DEPLOYMENT
