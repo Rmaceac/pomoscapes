@@ -4,6 +4,8 @@ import Paper from '@mui/material/Paper';
 import useSound from 'use-sound';
 import sprite from '../sounds/pomoscapes-sprite.mp3';
 
+import './Timer.css';
+
 const Timer = () => {
   const [minutes, setMinutes] = useState(25);
   const [seconds, setSeconds] = useState(0);
@@ -83,23 +85,25 @@ const Timer = () => {
   const displaySeconds = seconds < 10 ? `0${seconds}` : seconds;
 
   return (
-    <div>
-      <Paper elevation={12}>
+    <div className='container'> 
+      <Paper elevation={12} className='timer'>
         { showMessage &&
           <div className='timer-msg'>
             Time for a break!
           </div>
         }
-        <div>
+        <div className='time-display'>
           <span>{displayMinutes}</span>:<span>{displaySeconds}</span>
         </div>
-        <div>
+        <div className='controls'>
           <button onClick={handleToggle}>
             {isActive ? 'Pause' : 'Start'}
           </button>
           <button onClick={handleReset}>Reset</button>
         </div>
-        <div>Round: {round}</div>
+        <div className='round-display'>
+          Round: {round}
+        </div>
       </Paper>
     </div>
   );

@@ -1,13 +1,12 @@
 import React from 'react';
 import './App.css';
-import Timer from './components/Timer';
+import Main from './routes/Main';
 
 function App() {
   
   return (
-      <div>
-        <p>PomoScapes</p>
-        <Timer />
+      <div class='app'>
+        <Main />
       </div>
   )
 }

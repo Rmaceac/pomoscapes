@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+}
+
+.timer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40%; /* Modify this as required */
+  height: 40%; /* Modify this as required */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.time-display,
+.controls,
+.round-display {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
