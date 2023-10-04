@@ -5,15 +5,13 @@ import useSound from 'use-sound';
 import sprite from '../sounds/pomoscapes-sprite.mp3';
 
 const Timer = () => {
-  // CHANGE minutes/seconds NUMBERS FOR TESTING/DEPLOYMENT
   const [minutes, setMinutes] = useState(25);
   const [seconds, setSeconds] = useState(0);
   const [isActive, setIsActive] = useState(false);
   const [isPomo, setIsPomo] = useState(true);
   const [showMessage, setShowMessage] = useState(false);
   const [round, setRound] = useState(1);
-  const [intervalId, setIntervalId] = useState(null);
-
+  
   const handleToggle = () => {
     setIsActive(!isActive);
   };
@@ -21,7 +19,6 @@ const Timer = () => {
   const handleReset = () => {
     setIsActive(false);
     setShowMessage(false);
-    // CHANGE BELOW NUMBERS FOR TESTING/DEPLOYMENT
     setMinutes(25);
     setSeconds(0);
   };
@@ -33,17 +30,20 @@ const Timer = () => {
     }
   });
 
-  // const playBreakEnd = useSound();
-
   useEffect(() => {
+    let interval = null;
+
     if (isActive) {
-      const interval = setInterval(() => {
-        clearInterval(interval);  
-        if (seconds === 0) {
+      interval = setInterval(() => {
+        if (seconds > 0) {
+          setSeconds((prevSeconds) => prevSeconds - 1);
+        } else if (seconds === 0) {
           if (minutes !== 0) {
             setSeconds(59);
             setMinutes((prevMinutes) => prevMinutes - 1);
           } else {
+            clearInterval(interval); // it should be cleared here
+
             // logic for when timer runs out
             setIsActive(false);
             setIsPomo((prevIsPomo) => !prevIsPomo);
@@ -54,7 +54,6 @@ const Timer = () => {
                 setMinutes(15);
                 setSeconds(0);
               } else {
-                // CHANGE BELOW NUMBERS FOR TESTING/DEPLOYMENT
                 setMinutes(5);
                 setSeconds(0);
               }
@@ -66,17 +65,18 @@ const Timer = () => {
             }
           }
         }
-        if (seconds > 0) {
-          setSeconds((prevSeconds) => prevSeconds - 1);
-        }
-      }, 1000)
-
-      setIntervalId(interval);
+      }, 1000);
     } else {
-      clearInterval(intervalId); // clear the interval if isActive is false
+      if (interval !== null) {
+        clearInterval(interval);
+      }
     }
     
-    return () => clearInterval(intervalId); // clear the interval on cleanup
+    return () => {
+      if (interval !== null) {
+        clearInterval(interval);
+      }
+    };
   }, [seconds, isActive, isPomo, play, round]);
 
   const displayMinutes = minutes < 10 ? `0${minutes}` : minutes;
